@@ -1,0 +1,16 @@
+[user]
+	email = josedelinux@hotmail.com
+	name = Juan Chan
+[color]
+	ui = auto
+[http]
+	proxy = http://172.20.240.1:10811
+[https]
+	proxy = http://172.20.240.1:10811
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = main
