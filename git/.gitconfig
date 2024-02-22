@@ -3,10 +3,10 @@
 	name = Juan Chan
 [color]
 	ui = auto
-[http]
-	proxy = http://172.20.240.1:10811
-[https]
-	proxy = http://172.20.240.1:10811
+# [http]
+# 	proxy = http://172.20.240.1:10811
+# [https]
+# 	proxy = http://172.20.240.1:10811
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
