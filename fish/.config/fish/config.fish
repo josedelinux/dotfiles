@@ -14,3 +14,7 @@ end
 
 export http_proxy="http://$hostip:$http_port";
 export https_proxy="http://$hostip:$http_port";
+
+# Set up alias
+alias cxx c++
+alias csgen 'clang-format -style=google -dump-config > .clang-format'
