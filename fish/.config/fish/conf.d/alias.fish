@@ -3,6 +3,9 @@
 alias cxx c++
 
 
+# https://github.com/sharkdp/bat
+
+
 # https://github.com/lsd-rs/lsd
 alias ls='lsd'
 

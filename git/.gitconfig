@@ -14,3 +14,8 @@
 	smudge = git-lfs smudge -- %f
 [init]
 	defaultBranch = main
+
+[diff "pandoc"]
+  textconv=pandoc --to=markdown
+  prompt = false[alias]
+  wdiff = diff --word-diff=color --unified=1
