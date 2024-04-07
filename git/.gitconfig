@@ -19,3 +19,6 @@
   textconv=pandoc --to=markdown
   prompt = false[alias]
   wdiff = diff --word-diff=color --unified=1
+
+# add this to .gitattributes
+# *.docx diff=pandoc
