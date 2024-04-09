@@ -1,10 +1,17 @@
+# Run systemd-detect-virt and store the output in the variable "virt_env"
+set virt_env (systemd-detect-virt)
+
 # Set up command line proxy
-if string match -q "*WSL2*" (uname -a)
+if string match -q "wsl" $virt_env
   export hostip=(ip route | grep default | awk '{print $3}');
   export http_port=10811; # v2rayn
+else if string match -q "vmware" $virt_env
+  export hostip=192.168.198.1;
+  export http_port=10811; # v2rayn
 else
-  export hostip=127.0.0.1;
-  export http_port=20171; # v2raya
+  # real machine v2raya, no action needed
+  export hostip=
+  export http_port= 
 end
 
 
