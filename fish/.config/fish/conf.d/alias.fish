@@ -4,6 +4,7 @@ alias cxx c++
 
 
 # https://github.com/sharkdp/bat
+# Ubuntu/debian
 if command -v batcat >/dev/null
 	alias bat='batcat'
 end
