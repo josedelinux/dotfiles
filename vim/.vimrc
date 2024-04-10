@@ -39,8 +39,24 @@ set incsearch
 " Use highlighting when doing a search.
 set hlsearch
 
+" Indentation purely with hard tabs
+" ref: https://vim.fandom.com/wiki/Indenting_source_code
+set shiftwidth=2
+set tabstop=2
+
+" Enable auto-indentation
+set autoindent
+set smartindent
+set cindent
+
 " turn off annoying bell
 set belloff=all
+
+" Save undo history between sessions
+set undofile
+
+" Keep 100 lines of undo history
+set undolevels=100
 
 set backupdir=.
 set directory=.
