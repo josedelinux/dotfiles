@@ -49,6 +49,9 @@ set autoindent
 set smartindent
 set cindent
 
+" Show indentation guides
+set list listchars=tab:▸\ ,trail:·
+
 " turn off annoying bell
 set belloff=all
 
@@ -68,3 +71,4 @@ endif
 
 " sometimes you press too fast
 cnoremap W w
+cnoremap Q q
