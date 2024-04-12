@@ -17,7 +17,12 @@ end
 
 export http_proxy="http://$hostip:$http_port";
 export https_proxy="http://$hostip:$http_port";
- 
+
+function unsetproxy
+  set -e http_proxy
+  set -e https_proxy
+  echo "Network Proxy off"
+end
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.conf";
 
