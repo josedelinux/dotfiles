@@ -14,15 +14,18 @@ else
   export http_port=
 end
 
-
-export http_proxy="http://$hostip:$http_port";
-export https_proxy="http://$hostip:$http_port";
+function setproxy
+  export http_proxy="http://$hostip:$http_port";
+  export https_proxy="http://$hostip:$http_port";
+end
 
 function unsetproxy
   set -e http_proxy
   set -e https_proxy
   echo "Network Proxy off"
 end
+
+setproxy
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.conf";
 export EDITOR="vim";
