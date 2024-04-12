@@ -11,7 +11,7 @@ else if string match -q "vmware" $virt_env
 else
   # real machine v2raya, no action needed
   export hostip=
-  export http_port= 
+  export http_port=
 end
 
 
@@ -25,4 +25,4 @@ function unsetproxy
 end
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.conf";
-
+export EDITOR="vim";
