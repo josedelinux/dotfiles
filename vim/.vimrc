@@ -39,10 +39,12 @@ set incsearch
 " Use highlighting when doing a search.
 set hlsearch
 
-" Indentation purely with hard tabs
+" Indentation without hard tabs
 " ref: https://vim.fandom.com/wiki/Indenting_source_code
+set expandtab
 set shiftwidth=2
 set tabstop=2
+set softtabstop=2
 
 " Enable auto-indentation
 set autoindent
@@ -51,6 +53,8 @@ set cindent
 
 " Show indentation guides
 set list listchars=tab:▸\ ,trail:·
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
 
 " turn off annoying bell
 set belloff=all
