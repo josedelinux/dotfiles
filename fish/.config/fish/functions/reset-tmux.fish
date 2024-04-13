@@ -1,24 +1,26 @@
+# Set the path to the last tmux-resurrect save file
 set resurrect_save ~/.local/share/tmux/resurrect/last
 
-function reset-tmux -d "Reset tmux from tmux-resurrect last save"
+function reset-tmux -d "Reset tmux eliminating the last saved session from tmux-resurrect"
   if test -e $resurrect_save
-    echo "last save file $resurrect_save contents:"
-    cat ~/.local/share/tmux/resurrect/last
-    rm -i ~/.local/share/tmux/resurrect/last
+    echo "Contents of the last resurrect save file ($resurrect_save):"
+    cat $resurrect_save
+    rm -i $resurrect_save
 
   else
-    echo "tmux-resurrect save does not exist"
+    echo "No tmux-resurrect save file found."
   end
 
-  read -P "Do you want to tmux kill-server now? (yes/no)" choice
+  read -P "Do you want to kill the tmux server now? " choice
 
+  # Process the user's choice
   switch $choice
       case "yes" "y" "Y"
-          echo "Killing..."
+          echo "Killing the tmux server..."
           tmux kill-server
       case "no" "n" "N"
-          echo "Kill-server cancelled."
+          echo "Cancelling the kill-server operation."
       case '*'
-          echo "Invalid choice, please enter 'yes' or 'no'."
+          echo "Invalid choice, please enter 'yes/y/Y' or 'no/n/N'."
   end
 end
