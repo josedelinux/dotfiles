@@ -65,7 +65,13 @@ set undofile
 " Keep 100 lines of undo history
 set undolevels=100
 
+"Turn on backup option
+set backup
+
+"Where to store backups
 set backupdir=.
+
+"Where to store swap files
 set directory=.
 
 " In many terminal emulators the mouse works just fine, thus enable it.
