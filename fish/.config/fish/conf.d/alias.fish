@@ -1,10 +1,9 @@
-
 # Set up alias
+
 alias cxx c++
 
-
 # https://github.com/sharkdp/bat
-# Ubuntu/debian
+# For Ubuntu/debian
 if command -v batcat >/dev/null
 	alias bat='batcat'
 end
@@ -20,3 +19,5 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 alias rm='rm -i'
+
+alias tmux-reset='reset-tmux'
