@@ -1,4 +1,4 @@
-set resurrect_save ~/.local/share/tmux/resurrect/last 
+set resurrect_save ~/.local/share/tmux/resurrect/last
 
 function reset-tmux -d "Reset tmux from tmux-resurrect last save"
   if test -e $resurrect_save
