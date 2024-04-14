@@ -74,11 +74,15 @@ set undolevels=100
 "Turn on backup option
 set backup
 
+if !isdirectory($HOME."/.vim/backupdir")
+    silent! execute "!mkdir -p ~/.vim/backupdir"
+endif
+
 "Where to store backups
-set backupdir=.
+set backupdir=~/.vim/backupdir//,.
 
 "Where to store swap files
-set directory=.
+set directory=~/.vim/backupdir//,.
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
