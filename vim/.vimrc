@@ -46,6 +46,12 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+if has("autocmd")
+    " If the filetype is Makefile then we need to use tabs
+    " So do not expand tabs into space.
+    autocmd FileType make   set noexpandtab
+endif
+
 " Enable auto-indentation
 set autoindent
 set smartindent
