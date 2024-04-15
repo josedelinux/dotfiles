@@ -69,7 +69,7 @@ set belloff=all
 set undofile
 
 " Keep 100 lines of undo history
-set undolevels=100
+set undolevels=500
 
 "Turn on backup option
 set backup
@@ -83,6 +83,9 @@ set backupdir=~/.vim/backupdir//,.
 
 "Where to store swap files
 set directory=~/.vim/backupdir//,.
+
+"Where to store undo files
+set undodir=~/.vim/backupdir//,.
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
