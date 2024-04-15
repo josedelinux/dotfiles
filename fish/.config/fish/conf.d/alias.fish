@@ -3,9 +3,15 @@
 alias cxx c++
 
 # https://github.com/sharkdp/bat
-# For Ubuntu/debian
+# On Ubuntu/debian
 if command -v batcat >/dev/null
 	alias bat='batcat'
+end
+
+# https://github.com/sharkdp/fd
+# On Ubuntu/debian
+if command -v fdfind >/dev/null
+	alias fd='fdfind'
 end
 
 # https://github.com/lsd-rs/lsd
@@ -18,6 +24,11 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-alias rm='rm -i'
+# https://github.com/oberblastmeister/trashy
+if command -v trashy >/dev/null
+	alias rm='trashy put'
+else
+	alias rm='rm -i'
+end
 
 alias tmux-reset='reset-tmux'

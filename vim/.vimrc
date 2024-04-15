@@ -41,7 +41,10 @@ set hlsearch
 
 " Indentation without hard tabs
 " ref: https://vim.fandom.com/wiki/Indenting_source_code
-set expandtab
+
+" `:set et/noet` to turn on/off
+" `:retab` to convert tab to space
+"set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
