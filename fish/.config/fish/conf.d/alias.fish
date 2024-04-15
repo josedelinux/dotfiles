@@ -1,5 +1,7 @@
 # Set up alias
 
+# tips: use `type command` to find out what command is
+
 alias cxx c++
 
 # https://github.com/sharkdp/bat

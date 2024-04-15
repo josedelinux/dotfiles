@@ -96,5 +96,9 @@ if has('mouse')
 endif
 
 " sometimes you press too fast
-cnoremap W w
-cnoremap Q q
+cnoremap W w " command mode: write
+cnoremap Q q " command mode: quit
+
+nnoremap <c-s> :w<CR> " normal mode: save
+
+inoremap jk <ESC> " insert mode: escape
