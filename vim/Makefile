@@ -1,6 +1,6 @@
 .PHONY: install
 install: 
-	stow --target $(HOME) --ignore "^makefile" --verbose .
+	stow --target $(HOME) --ignore "^[mM]akefile" --verbose .
 
 .PHONY: uninstall
 uninstall: 
