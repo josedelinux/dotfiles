@@ -1,12 +1,12 @@
 .PHONY: install
 install: install-nvchad
-	@if [ -h ~/.config/nvim/lua/custom/configs/chadrc.lua ]; then \
-		echo "Softlink ~/.config/nvim/lua/custom/configs/chadrc.lua exists. Already stowed?"; \
+	@if [ -h ~/.config/nvim/lua/custom/chadrc.lua ]; then \
+		echo "Softlink ~/.config/nvim/lua/custom/chadrc.lua exists. Already stowed?"; \
 		exit 1; \
 	fi
-	@if [ -f ~/.config/nvim/lua/custom/configs/chadrc.lua ]; then \
-		mv ~/.config/nvim/lua/custom/configs/chadrc.lua ~/.config/nvim/lua/custom/configs/chadrc.lua.bak; \
-		echo "Existing ~/.config/nvim/lua/custom/configs/chadrc.lua backed up as ~/.config/nvim/lua/custom/configs/chadrc.lua.bak"; \
+	@if [ -f ~/.config/nvim/lua/custom/chadrc.lua ]; then \
+		mv ~/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua.bak; \
+		echo "Existing ~/.config/nvim/lua/custom/chadrc.lua backed up as ~/.config/nvim/lua/custom/chadrc.lua.bak"; \
 	fi
 	stow --target $(HOME) --verbose --no-folding .
 	@echo "nvim installation complete." 
