@@ -1,5 +1,9 @@
 .PHONY: install
 install: install-tpm
+	@if [ -h ~/.tmux.conf ]; then \
+		echo "Softlink ~/.tmux.conf exists. Already stowed?"; \
+		exit 1; \
+	fi
 	@if [ -f ~/.tmux.conf ]; then \
 		mv ~/.tmux.conf ~/.tmux.conf.bak; \
 		echo "Existing ~/.tmux.conf backed up as ~/.tmux.conf.bak"; \
