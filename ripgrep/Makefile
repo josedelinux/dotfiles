@@ -1,6 +1,6 @@
 .PHONY: install
 install: 
-	@if [ -h ~/.config/ripgrep/ripgrep.conf ]; then \
+	@if [ -h ~/.config/ripgrep ] || [ -h ~/.config/ripgrep/ripgrep.conf ]; then \
 		echo "Softlink ~/.config/ripgrep/ripgrep.conf exists. Already stowed?"; \
 		exit 1; \
 	fi
