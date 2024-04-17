@@ -5,6 +5,11 @@ install: install-tpm
 		echo "Existing ~/.tmux.conf backed up as ~/.tmux.conf.bak"; \
 	fi
 	stow --target $(HOME) --verbose .
+
+	@if [ -n "$(TMUX)" ]; then \
+		tmux source ~/.tmux.conf; \
+	fi; \
+
 	@echo "Plugin installation complete. Press prefix + I (capital i) in tmux to fetch the plugin."
 
 .PHONY: install-tpm
