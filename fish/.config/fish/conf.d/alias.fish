@@ -27,10 +27,10 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 # https://github.com/oberblastmeister/trashy
-if command -v trash >/dev/null
-	alias rm='trash put'
-else
-	alias rm='rm -i'
-end
+# if command -v trash >/dev/null
+# 	alias rm='trash put'
+# else
+# 	alias rm='rm -i'
+# end
 
 alias tmux-reset='reset-tmux'

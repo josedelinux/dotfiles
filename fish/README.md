@@ -6,8 +6,8 @@ You would need to have [fisher plugin manage](https://github.com/jorgebucaran/fi
 
 assume you have a vanilla fish shell
 ```bash
-# remove default fish config
-rm ~/.config/fish/config.sh 
+# backup default fish config
+mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
 
 # create softlinks
 stow -v fish
