@@ -4,8 +4,8 @@ set virt_env (systemd-detect-virt)
 # Set up command line proxy
 function setproxy
   if test -n "$http_proxy"
-    echo "setproxy: Proxy is already set. Skipping."
-    dumpproxy
+    # echo "setproxy: Proxy is already set. Skipping."
+    # dumpproxy
     return
   end
 
