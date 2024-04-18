@@ -3,7 +3,11 @@ local M = {}
 M.general = {
   i = {
     ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = false } },
-  }
+  },
+  c = {
+    ["W"] = { "w", "Write" },
+    ["Q"] = { "q", "Quit" },
+  },
 }
 
 M.dap = {
