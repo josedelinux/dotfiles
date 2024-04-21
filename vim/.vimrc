@@ -103,7 +103,7 @@ cnoremap W w
 cnoremap Q q
 
 " command mode: sudo force write
-cnoremap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null % <CR>
 
 " normal mode: save
 nnoremap <c-s> :w<CR>
