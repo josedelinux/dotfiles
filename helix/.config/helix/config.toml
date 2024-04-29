@@ -10,7 +10,7 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = false
+hidden = false # show hidden files
 
 [editor.soft-wrap]
 enable = true
