@@ -12,7 +12,3 @@ end
 if command -v starship > /dev/null
 	starship init fish | source
 end
-
-if command -v fastfetch > /dev/null
-  fastfetch
-end
