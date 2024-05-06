@@ -7,4 +7,8 @@ if status is-interactive
 
   # i type fast
   abbr --add tmx 'tmux'
+
+	# makefile abbr
+	abbr --add mb 'make -B'
+	abbr --add mc 'make clean'
 end
