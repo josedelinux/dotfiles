@@ -14,7 +14,7 @@ install: install-nvchad
 
 .PHONY: install-nvchad
 install-nvchad:
-	@if [ ! -d ~/.tmux/plugins/tpm ]; then \
+	@if [ ! -f ~/.config/nvim/lua/core/init.lua ]; then \
 		git clone https://github.com/NvChad/starter ~/.config/nvim; \
 		echo "NvChad installed successfully."; \
 	else \
