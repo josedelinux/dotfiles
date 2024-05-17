@@ -1,6 +1,9 @@
+info:
+	@echo "Moved to [NvChad-Config](https://github.com/josedelinux/nvchad-config)"
+
 .PHONY: install
 install: install-nvchad
-	@if [ -h ~/.config/nvim/lua/custom/chadrc.lua ]; then \
+	@if [ -f ~/.config/nvim/lua/custom/chadrc.lua ]; then \
 		echo "Softlink ~/.config/nvim/lua/custom/chadrc.lua exists. Already stowed?"; \
 		exit 1; \
 	fi
