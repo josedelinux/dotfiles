@@ -16,6 +16,8 @@ if command -v fdfind >/dev/null
 	alias fd='fdfind'
 end
 
+alias gls='/usr/bin/ls'
+
 # https://github.com/lsd-rs/lsd
 if command -v lsd >/dev/null
 	alias ls='lsd'
