@@ -11,4 +11,8 @@ if status is-interactive
 	# makefile abbr
 	abbr --add mb 'make -B'
 	abbr --add mc 'make clean'
+
+  # docker
+  abbr --add docker-revive 'docker start -a -i (docker ps -q -l)'
+
 end
