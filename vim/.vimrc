@@ -74,8 +74,11 @@ set undofile
 " Keep 100 lines of undo history
 set undolevels=500
 
-"Turn on backup option
+" Turn on backup option
 set backup
+
+" Always show tabline (default 1)
+set showtabline=2
 
 if !isdirectory($HOME."/.vim/backupdir")
     silent! execute "!mkdir -p ~/.vim/backupdir"
