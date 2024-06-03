@@ -98,6 +98,10 @@ if has('mouse')
   set mouse=a
 endif
 
+if &diff
+    colorscheme blue
+endif
+
 " sometimes you press too fast
 " command mode: write
 cnoremap W w
