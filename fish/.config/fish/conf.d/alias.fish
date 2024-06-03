@@ -8,6 +8,7 @@ alias cxx c++
 # On Ubuntu/debian
 if command -v batcat >/dev/null
 	alias bat='batcat'
+	alias bata='batcat -A'
 end
 
 # https://github.com/sharkdp/fd

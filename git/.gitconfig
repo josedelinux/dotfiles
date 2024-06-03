@@ -1,19 +1,19 @@
 [user]
-	email = josedelinux@hotmail.com
-	name = Juan Chan
+    email = josedelinux@hotmail.com
+    name = Juan Chan
 [color]
-	ui = auto
+    ui = auto
 # [http]
 # 	proxy = http://172.20.240.1:10811
 # [https]
 # 	proxy = http://172.20.240.1:10811
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [diff "pandoc"]
   textconv=pandoc --to=markdown
@@ -42,3 +42,9 @@
 
 [diff]
     colorMoved = default
+
+[alias]
+    dif = diff
+    d = diff
+    dc = diff --cached
+    ds = diff --staged
