@@ -115,5 +115,20 @@ cnoremap w!! w !sudo tee > /dev/null % <CR>
 " normal mode: save
 nnoremap <c-s> :w<CR>
 
+" Copy and paste
+if has('clipboard')
+	" Copy the Whole file
+	nnoremap <c-c> :%y+<CR>
+
+	" use y p d probably more efficient
+	vnoremap <C-c> "+y
+	vnoremap <C-x> "+d
+	vnoremap <C-v> "+p
+
+	" input mode paste
+	inoremap <C-v> <C-r><C-o>+
+endif
+
 " insert mode: escape
 inoremap jk <ESC>
+
