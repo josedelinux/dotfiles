@@ -4,6 +4,102 @@
 " To temporarily use Vim without loading your .vimrc configuration file
 " `vim -u /dev/null`
 
+" Leader key
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
+if ! empty(globpath(&rtp, 'autoload/plug.vim'))
+  call plug#begin()
+
+  " List your plugins here
+  Plug 'morhetz/gruvbox'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'vim-airline/vim-airline'
+  Plug 'preservim/tagbar'
+  Plug 'liuchengxu/vim-which-key'
+  "Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+  call plug#end()
+endif
+
+" === whichkey ===
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+let g:which_key_map =  {}
+
+" buffer operation
+let g:which_key_map.b = 'new-buffer'
+let g:which_key_map.x = 'close-buffer'
+
+silent! call which_key#register('<Space>', "g:which_key_map")
+" === whichkey ===
+
+" === theme gruvbox ===
+"colorscheme gruvbox
+if &runtimepath =~? "gruvbox"
+  colorscheme gruvbox
+else
+  colorscheme desert
+endif
+" Setting dark mode
+set background=dark
+
+if &diff
+    colorscheme blue
+endif
+
+" transparent background
+autocmd VimEnter * hi Normal ctermbg=none
+
+" === theme gruvbox ===
+
+" === indent-guides ===
+
+let g:indent_guides_enable_on_vim_startup = 1
+" colorscheme tir_black
+" set ts=4 sw=4 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+" === indent-guides ===
+
+" === gutentags ===
+"let g:gutentags_trace = 1
+let g:gutentags_modules = ['ctags']
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" Specifies the name of the tag file to create
+"let g:gutentags_ctags_tagfile = '.tags'
+
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags)
+endif
+
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--kinds-C=+px']
+let g:gutentags_ctags_extra_args += ['--kinds-C++=+px']
+"autocmd! User vim-gutentags call gutentags#setup_gutentags()
+
+" === gutentags ===
+
+" === airline ===
+let g:airline#extensions#tabline#enabled = 1
+
+" === airline ===
+
+
+" === tagbar ===
+nmap <leader>tb :TagbarToggle<CR>
+
+" === tagbar ===
+
+
 " Turn syntax highlighting on.
 syntax on
 
@@ -98,9 +194,7 @@ if has('mouse')
   set mouse=a
 endif
 
-if &diff
-    colorscheme blue
-endif
+" Mappings
 
 " sometimes you press too fast
 " command mode: write
@@ -131,4 +225,17 @@ endif
 
 " insert mode: escape
 inoremap jk <ESC>
+
+" normal mode: clear highlight
+nnoremap <Esc> :noh<CR>
+
+" buffer navigation
+nnoremap <leader>b :enew<CR>
+
+nnoremap <tab> :bnext<CR>
+"let g:which_key_map['<tab>'] = 'next'
+
+nnoremap <S-tab> :bprevious<CR>
+
+nnoremap <leader>x :bdelete<CR>
 
