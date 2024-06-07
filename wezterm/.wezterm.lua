@@ -1,28 +1,25 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 
-
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
 end)
 
+local config = {}
 
-local config = {
+config.check_for_updates = false
 
-	check_for_updates = false,
+-- config.enable_scroll_bar = true
 
-	enable_scroll_bar = true,
+-- config.color_scheme = 'Batman'
+-- config.color_scheme = "Builtin Solarized Dark"
+config.color_scheme = "Catppuccin Frappe"
 
-	-- color_scheme = 'Batman',
-	color_scheme = "Builtin Solarized Dark",
-	-- color_scheme = "Catppuccin Frappe",
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font_size = 11
 
-	font = wezterm.font("JetBrainsMono Nerd Font"),
-	font_size = 11,
-
-	window_background_opacity = 0.85,
-}
+config.window_background_opacity = 0.85
 
 -- Using shell
 local launch_menu = {}
@@ -35,7 +32,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	})
 	table.insert(launch_menu, {
 		label = "wsl",
-		args = { "wsl.exe" },
+		args = { "wsl.exe", "--cd", "~" },
 	})
 	default_prog = { "pwsh.exe", "-l" }
 elseif wezterm.target_triple == "x86_64-apple-darwin" then

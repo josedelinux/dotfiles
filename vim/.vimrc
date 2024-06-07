@@ -239,3 +239,13 @@ nnoremap <S-tab> :bprevious<CR>
 
 nnoremap <leader>x :bdelete<CR>
 
+" vim-powered terminal in split window
+map <Leader>t :term ++close<cr>
+tmap <Leader>t <c-w>:term ++close<cr>
+
+" vim-powered terminal in new tab
+map <Leader>T :tab term ++close<cr>
+tmap <Leader>T <c-w>:tab term ++close<cr>
+
+" switch into terminal normal mode
+tmap <C-x> <C-\><C-N>
