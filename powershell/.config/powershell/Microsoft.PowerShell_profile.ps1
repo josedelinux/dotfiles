@@ -58,3 +58,8 @@ setproxy
 
 Invoke-Expression (&starship init powershell)
 
+$exTime = Measure-Command {
+  #Invoke-Expression (&starship init powershell)
+}
+
+Write-host "Starship initialization time was: $exTime"
