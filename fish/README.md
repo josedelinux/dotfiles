@@ -2,9 +2,10 @@
 
 ## Installation
 
-You would need to have [fisher plugin manage](https://github.com/jorgebucaran/fisher) installed 
+You would need to have [fisher plugin manage](https://github.com/jorgebucaran/fisher) installed
 
 assume you have a vanilla fish shell
+
 ```bash
 # backup default fish config
 mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
@@ -13,7 +14,7 @@ mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
 stow -v fish
 
 # install plugin manager
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source 
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 
 # update plugins
 fisher update
