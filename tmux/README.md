@@ -1,4 +1,4 @@
-# tmux dofiles
+# tmux dotfile
 
 ## Installation
 
