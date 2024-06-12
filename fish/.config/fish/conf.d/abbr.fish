@@ -1,4 +1,5 @@
 if status is-interactive
+  abbr --add unset 'set --erase'
   abbr --add cl clear
   abbr --add vifzf 'vim (fzf)'
   abbr --add vani 'vim -u /dev/null'
