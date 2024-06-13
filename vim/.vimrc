@@ -196,6 +196,17 @@ endif
 
 " Mappings
 
+" set up alt key
+" https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
+" Also make sure vim 9 is installed
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+set ttimeout ttimeoutlen=50
+
 " sometimes you press too fast
 " command mode: write
 cnoremap W w
@@ -220,7 +231,8 @@ if has('clipboard')
 	vnoremap <C-v> "+p
 
 	" input mode paste
-	inoremap <C-v> <C-r><C-o>+
+  " this may conflict with i_CTRL-V: Insert next non-digit literally
+	"inoremap <C-v> <C-r><C-o>+
 endif
 
 " insert mode: escape
@@ -240,8 +252,12 @@ nnoremap <S-tab> :bprevious<CR>
 nnoremap <leader>x :bdelete<CR>
 
 " vim-powered terminal in split window
-map <Leader>t :term ++close<cr>
-tmap <Leader>t <c-w>:term ++close<cr>
+" https://gist.github.com/mahemoff/8967b5de067cffc67cec174cb3a9f49d
+map <Leader>th :term ++close<cr>
+tmap <Leader>th <c-w>:term ++close<cr>
+
+map <A-h> :term ++close<cr>
+tmap <A-h> <c-w>:term ++close<cr>
 
 " vim-powered terminal in new tab
 map <Leader>T :tab term ++close<cr>
