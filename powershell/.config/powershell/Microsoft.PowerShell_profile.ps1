@@ -15,6 +15,8 @@ if($IsWindows){
   }
 
   $env:CMAKE_GENERATOR = "MSYS Makefiles"
+  $env:PYTHONSTARTUP = "$HOME\.PYTHONSTARTUP"
+
 }else{
   function setproxy() {
     #$Env:https_proxy="http://localhost:10809"
@@ -56,10 +58,12 @@ function lt {
 
 setproxy
 
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 Invoke-Expression (&starship init powershell)
 
-$exTime = Measure-Command {
-  #Invoke-Expression (&starship init powershell)
-}
-
-Write-host "Starship initialization time was: $exTime"
+#$exTime = Measure-Command {
+#  Invoke-Expression (&starship init powershell)
+#}
+#
+#Write-host "Starship initialization time was: $exTime"
