@@ -9,6 +9,7 @@ if status is-interactive
 
   # i type fast
   abbr --add tmx 'tmux'
+  abbr --add lg 'lazygit'
 
 	# makefile abbr
 	abbr --add mb 'make -B'
