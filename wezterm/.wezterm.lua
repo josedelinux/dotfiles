@@ -18,7 +18,11 @@ config.check_for_updates = false
 -- config.color_scheme = 'Molokai (Gogh)'
 config.color_scheme = "Molokai"
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font_with_fallback({
+	"JetBrainsMono Nerd Font",
+	"JetBrains Mono",
+})
 config.font_size = 11
 
 config.window_background_opacity = 0.85
@@ -70,11 +74,38 @@ end
 config.default_prog = default_prog
 config.launch_menu = launch_menu
 
+local function toggle_override(window, override, params)
+	local overrides = window:get_config_overrides() or {}
+
+	print(overrides[override])
+	if not overrides[override] then
+		overrides[override] = params
+	else
+		overrides[override] = nil
+	end
+
+	window:set_config_overrides(overrides)
+end
+
+wezterm.on("toggle-opacity", function(window, _)
+	toggle_override(window, "window_background_opacity", 1)
+end)
+
+wezterm.on("toggle-ligature", function(window, _)
+	toggle_override(window, "harfbuzz_features", {
+		"calt=0",
+		"clig=0",
+		"liga=0",
+	})
+end)
+
 -- Keybinds
 -- `wezterm show-keys --lua` to see assignments
 
 config.keys = {
 	{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+	{ key = "o", mods = "ALT", action = wezterm.action.EmitEvent("toggle-opacity") },
+	{ key = "e", mods = "ALT", action = wezterm.action.EmitEvent("toggle-ligature") },
 }
 
 return config
