@@ -209,10 +209,15 @@ set ttimeout ttimeoutlen=50
 
 " sometimes you press too fast
 " command mode: write
-cnoremap W w
+"cnoremap W w
 
 " command mode: quit
-cnoremap Q q
+"cnoremap Q q
+
+" Remap 'W' to 'w' and 'Q' to 'q' in command mode, but not in search mode
+" https://stackoverflow.com/questions/30836269/how-to-map-a-key-in-command-line-mode-but-not-in-search-mode
+cnoremap <nowait> <expr> Q getcmdtype() ==# ':' && getcmdpos() == 1 ? 'q' : 'Q'
+cnoremap <nowait> <expr> W getcmdtype() ==# ':' && getcmdpos() == 1 ? 'w' : 'W'
 
 " command mode: sudo force write
 cnoremap w!! w !sudo tee > /dev/null % <CR>
