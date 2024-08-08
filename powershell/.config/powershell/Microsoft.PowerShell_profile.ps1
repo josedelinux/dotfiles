@@ -28,7 +28,7 @@ if($IsWindows){
   }
 }
 Set-Alias cxx clang++
-
+Set-Alias lg lazygit
 
 # Alias 'gls' to the 'ls' command with full path
 Set-Alias gls Get-ChildItem
@@ -49,6 +49,10 @@ function la {
 
 function lla {
     lsd -la @args
+}
+
+function ll {
+    lsd -lh @args
 }
 
 function lt {

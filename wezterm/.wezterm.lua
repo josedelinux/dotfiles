@@ -39,7 +39,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		args = { "pwsh.exe", "-NoLogo" },
 	})
 	table.insert(launch_menu, {
-		label = "Builtin PowerShell",
+		label = "Windows PowerShell",
 		args = { "powershell.exe", "-NoLogo" },
 	})
 	table.insert(launch_menu, {
