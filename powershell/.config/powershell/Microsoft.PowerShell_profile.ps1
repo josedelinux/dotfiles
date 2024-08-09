@@ -5,6 +5,10 @@ if($IsWindows){
   function msys {
     & "C:\msys64\msys2_shell.cmd" -shell fish -defterm -here -no-start -ucrt64
   }
+  function pathedit{
+    # win+r: `rundll32 sysdm.cpl,EditEnvironmentVariables`
+    Start-Process "rundll32.exe" -ArgumentList "sysdm.cpl,EditEnvironmentVariables"
+  }
   function setproxy() {
     $Env:https_proxy="http://localhost:10809"
     $Env:http_proxy="http://localhost:10809"
