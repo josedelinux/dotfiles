@@ -5,8 +5,10 @@
     ui = auto
 # [http]
 # 	proxy = http://172.20.240.1:10811
+# 	proxy = http://localhost:10809
 # [https]
 # 	proxy = http://172.20.240.1:10811
+
 [filter "lfs"]
     process = git-lfs filter-process
     required = true
@@ -48,3 +50,6 @@
     d = diff
     dc = diff --cached
     ds = diff --staged
+
+[credential "helperselector"]
+	selected = manager
