@@ -14,10 +14,19 @@ if($IsWindows){
           [string]$ProxyAddress
       )
       
+      # Check if v2rayn.exe or v2rayawin.exe is running
+      $v2raynRunning = Get-Process -Name "v2rayn" -ErrorAction SilentlyContinue
+      $v2rayawinRunning = Get-Process -Name "v2rayawin" -ErrorAction SilentlyContinue
+
+      # Set default proxy address based on running process
       if (-not $ProxyAddress) {
-          $ProxyAddress = "http://localhost:10809" # v2rayn
-          $ProxyAddress = "http://localhost:20171" # v2raya 
-          $ProxyAddress = "http://localhost:20172" # v2raya with traffic rules
+          if ($v2raynRunning) {
+              $ProxyAddress = "http://localhost:10809"
+          } elseif ($v2rayawinRunning) {
+              $ProxyAddress = "http://localhost:20172"
+          } else {
+              $ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
+          }
       }
       
       $Env:https_proxy = $ProxyAddress
