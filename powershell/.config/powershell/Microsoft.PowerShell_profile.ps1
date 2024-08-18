@@ -9,9 +9,21 @@ if($IsWindows){
     # win+r: `rundll32 sysdm.cpl,EditEnvironmentVariables`
     Start-Process "rundll32.exe" -ArgumentList "sysdm.cpl,EditEnvironmentVariables"
   }
-  function setproxy() {
-    $Env:https_proxy="http://localhost:10809"
-    $Env:http_proxy="http://localhost:10809"
+  function setproxy {
+      param (
+          [string]$ProxyAddress
+      )
+      
+      if (-not $ProxyAddress) {
+          $ProxyAddress = "http://localhost:10809" # v2rayn
+          $ProxyAddress = "http://localhost:20171" # v2raya 
+          $ProxyAddress = "http://localhost:20172" # v2raya with traffic rules
+      }
+      
+      $Env:https_proxy = $ProxyAddress
+      $Env:http_proxy = $ProxyAddress
+      
+      Write-Output "Proxy set to: $ProxyAddress"
   }
   function unsetproxy() {
     $Env:https_proxy=""
@@ -75,3 +87,4 @@ Invoke-Expression (&starship init powershell)
 #}
 #
 #Write-host "Starship initialization time was: $exTime"
+
