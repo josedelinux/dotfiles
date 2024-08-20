@@ -17,6 +17,7 @@ if($IsWindows){
       # Check if v2rayn.exe or v2rayawin.exe is running
       $v2raynRunning = Get-Process -Name "v2rayn" -ErrorAction SilentlyContinue
       $v2rayawinRunning = Get-Process -Name "v2rayawin" -ErrorAction SilentlyContinue
+      $nekorayRunning = Get-Process -Name "nekoray" -ErrorAction SilentlyContinue
 
       # Set default proxy address based on running process
       if (-not $ProxyAddress) {
@@ -24,6 +25,8 @@ if($IsWindows){
               $ProxyAddress = "http://localhost:10809"
           } elseif ($v2rayawinRunning) {
               $ProxyAddress = "http://localhost:20172"
+          } elseif ($nekorayRunning) {
+              $ProxyAddress = "http://localhost:2081"
           } else {
               $ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
           }
@@ -54,6 +57,10 @@ if($IsWindows){
 }
 Set-Alias cxx clang++
 Set-Alias lg lazygit
+
+function csgen {
+    clang-format -style=google -dump-config > .clang-format
+}
 
 # Alias 'gls' to the 'ls' command with full path
 Set-Alias gls Get-ChildItem
