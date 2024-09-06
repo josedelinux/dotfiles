@@ -1,14 +1,29 @@
 Set-PSReadLineOption -EditMode Emacs
+
+$EnableStarshipPrompt = $false
+
 if($IsWindows){
   Import-Module gsudoModule # use gsudo https://scoop.sh/#/apps?q=gsudo
   Set-Alias lvim "C:\Users\Jose\.local\bin\lvim.ps1"
+
   function msys {
     & "C:\msys64\msys2_shell.cmd" -shell fish -defterm -here -no-start -ucrt64
   }
+
   function pathedit{
     # win+r: `rundll32 sysdm.cpl,EditEnvironmentVariables`
     Start-Process "rundll32.exe" -ArgumentList "sysdm.cpl,EditEnvironmentVariables"
   }
+
+  function hisedit {
+    $historyPath = (Get-PSReadlineOption).HistorySavePath
+    Start-Process $historyPath
+  }
+
+  function vihis {
+    nvim (Get-PSReadlineOption).HistorySavePath
+  }
+
   function setproxy {
       param (
           [string]$ProxyAddress
@@ -34,6 +49,7 @@ if($IsWindows){
       
       $Env:https_proxy = $ProxyAddress
       $Env:http_proxy = $ProxyAddress
+      $Env:no_proxy = "localhost,127.0.0.1,::1"
       
       Write-Output "Proxy set to: $ProxyAddress"
   }
@@ -96,7 +112,12 @@ setproxy
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-Invoke-Expression (&starship init powershell)
+if ($EnableStarshipPrompt) {
+  Invoke-Expression (&starship init powershell)
+}
+
+#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
 
 #$exTime = Measure-Command {
 #  Invoke-Expression (&starship init powershell)
