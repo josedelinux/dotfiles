@@ -8,6 +8,7 @@ fish_add_path $fish_add_path_flag /home/$USER/.cargo/bin/
 fish_add_path $fish_add_path_flag /home/$USER/.local/bin/
 fish_add_path $fish_add_path_flag /usr/local/go/bin/ # go installed the official way
 fish_add_path $fish_add_path_flag /home/$USER/go/bin/
+fish_add_path $fish_add_path_flag /home/$USER/.cargo/bin/
 fish_add_path $fish_add_path_flag /home/$USER/.local/share/nvim/mason/bin/ # tools installed by meson
 fish_add_path $fish_add_path_flag /home/jose/.luarocks/bin/ # tools installed by luarocks
 
