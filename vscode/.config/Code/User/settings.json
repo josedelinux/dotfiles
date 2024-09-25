@@ -73,6 +73,7 @@
             ]
         }
     ],
+    "vim.leader": " ",
     "cmake.pinnedCommands": [
         "workbench.action.tasks.configureTaskRunner",
         "workbench.action.tasks.runTask"
@@ -97,4 +98,15 @@
         "*.sdb": "${capture}.${extname}-*",
         "*.s3db": "${capture}.${extname}-*"
     },
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "cmake.showOptionsMovedNotification": false,
+    "remote.SSH.remotePlatform": {
+        "arch-i1502": "linux"
+    },
+    "git.autofetch": true,
+    "http.proxyAuthorization": null,
+    "settingsSync.ignoredExtensions": [
+        "ms-python.python"
+    ],
+    // "http.proxy": "http://localhost:10811",
 }
