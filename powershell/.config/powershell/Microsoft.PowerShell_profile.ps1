@@ -24,6 +24,10 @@ if($IsWindows){
     nvim (Get-PSReadlineOption).HistorySavePath
   }
 
+  function RebootFirmware {
+    shutdown /r /fw /t 0
+  }
+
   function setproxy {
       param (
           [string]$ProxyAddress
