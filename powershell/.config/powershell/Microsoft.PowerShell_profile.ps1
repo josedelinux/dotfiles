@@ -111,10 +111,7 @@ function lt {
     lsd --tree @args
 }
 
-
 setproxy
-
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 if ($EnableStarshipPrompt) {
   Invoke-Expression (&starship init powershell)
@@ -122,6 +119,8 @@ if ($EnableStarshipPrompt) {
 
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 #$exTime = Measure-Command {
 #  Invoke-Expression (&starship init powershell)
