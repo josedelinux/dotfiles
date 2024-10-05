@@ -49,3 +49,6 @@ setproxy
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.conf";
 export EDITOR="vim";
+
+#https://wiki.archlinux.org/title/Node.js#Allow_user-wide_installations
+export npm_config_prefix="$HOME/.local"
