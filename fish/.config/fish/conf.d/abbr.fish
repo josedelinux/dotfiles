@@ -2,6 +2,7 @@ if status is-interactive
   abbr --add unset 'set --erase'
   abbr --add cl clear
   abbr --add vifzf 'vim (fzf)'
+  abbr --add nvfzf 'nvim (fzf)'
   abbr --add vani 'vim -u /dev/null'
   abbr --add vini 'vim -u /dev/null'
   abbr --add vihis 'nvim ~/.local/share/fish/fish_history'
