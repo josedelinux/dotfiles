@@ -4,7 +4,6 @@ $EnableStarshipPrompt = $false
 
 if($IsWindows){
   Import-Module gsudoModule # use gsudo https://scoop.sh/#/apps?q=gsudo
-  Set-Alias lvim "C:\Users\Jose\.local\bin\lvim.ps1"
 
   function msys {
     & "C:\msys64\msys2_shell.cmd" -shell fish -defterm -here -no-start -ucrt64
