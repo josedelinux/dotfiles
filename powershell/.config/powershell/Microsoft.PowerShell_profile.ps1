@@ -46,7 +46,8 @@ if($IsWindows){
           } elseif ($nekorayRunning) {
               $ProxyAddress = "http://localhost:2081"
           } else {
-              $ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
+              #$ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
+              return
           }
       }
       
@@ -56,6 +57,7 @@ if($IsWindows){
       
       Write-Output "Proxy set to: $ProxyAddress"
   }
+
   function unsetproxy() {
     $Env:https_proxy=""
     $Env:http_proxy=""
@@ -120,6 +122,8 @@ if ($EnableStarshipPrompt) {
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+fnm env --use-on-cd | Out-String | Invoke-Expression
 
 #$exTime = Measure-Command {
 #  Invoke-Expression (&starship init powershell)
