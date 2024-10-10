@@ -28,6 +28,8 @@
 # config from delta
 [core]
     pager = delta
+    ignorecase = false
+
 
 [interactive]
     diffFilter = delta --color-only
