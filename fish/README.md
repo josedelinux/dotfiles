@@ -11,7 +11,8 @@ assume you have a vanilla fish shell
 mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
 
 # create softlinks
-stow -v fish
+# --no-folding disable creating symlink to directory
+stow -v --no-folding fish
 
 # install plugin manager
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source

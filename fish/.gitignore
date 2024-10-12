@@ -1,0 +1,4 @@
+.config/fish/conf.d/fnm.fish 
+# don't use system package manager
+# instead use `curl -fsSL https://fnm.vercel.app/install | bash`
+# rf: https://nodejs.org/en/download/package-manager/current
