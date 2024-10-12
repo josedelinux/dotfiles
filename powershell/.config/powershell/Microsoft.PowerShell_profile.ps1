@@ -27,6 +27,14 @@ if($IsWindows){
     shutdown /r /fw /t 0
   }
 
+  function reboot {
+    shutdown /r /t 0
+  }
+
+  function poweroff {
+    shutdown /s /t 0
+  }
+
   function setproxy {
       param (
           [string]$ProxyAddress
@@ -130,4 +138,3 @@ fnm env --use-on-cd | Out-String | Invoke-Expression
 #}
 #
 #Write-host "Starship initialization time was: $exTime"
-
