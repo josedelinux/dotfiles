@@ -2,8 +2,8 @@
 
 # *.fish scripts in ~/.config/fish/conf.d/ are also automatically executed before config.fish.
 
-set USE_STARSHIP false  # Change to false to disable starship
-set USE_OMP true  # Change to false to disable oh-my-posh
+set USE_STARSHIP true  # Change to false to disable starship
+set USE_OMP false  # Change to false to disable oh-my-posh
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
