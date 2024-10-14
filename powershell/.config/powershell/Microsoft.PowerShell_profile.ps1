@@ -1,6 +1,7 @@
 Set-PSReadLineOption -EditMode Emacs
 
-$EnableStarshipPrompt = $false
+$EnableStarshipPrompt = $true
+$EnableOMPPrompt = $false
 
 if($IsWindows){
   Import-Module gsudoModule # use gsudo https://scoop.sh/#/apps?q=gsudo
@@ -126,12 +127,18 @@ if ($EnableStarshipPrompt) {
   Invoke-Expression (&starship init powershell)
 }
 
-#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
+if ($EnableOMPPrompt){
+  # oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | Invoke-Expression
+  oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\atomic.omp.json" | Invoke-Expression
+}
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
 
-fnm env --use-on-cd | Out-String | Invoke-Expression
+if (Get-Command fnm -ErrorAction SilentlyContinue) {
+  fnm env --use-on-cd | Out-String | Invoke-Expression
+}
 
 #$exTime = Measure-Command {
 #  Invoke-Expression (&starship init powershell)
