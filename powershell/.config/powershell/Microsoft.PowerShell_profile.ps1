@@ -76,6 +76,8 @@ if($IsWindows){
   $env:PYTHONSTARTUP = "$HOME\.PYTHONSTARTUP"
 
 }else{
+  # other system other than windows
+
   function setproxy() {
     #$Env:https_proxy="http://localhost:10809"
     #$Env:http_proxy="http://localhost:10809"
@@ -85,6 +87,9 @@ if($IsWindows){
   #  $Env:http_proxy=""
   }
 }
+
+# platform agnostic configs
+
 Set-Alias cxx clang++
 Set-Alias lg lazygit
 
@@ -99,26 +104,27 @@ Set-Alias gls Get-ChildItem
 if (Get-Command lsd -ErrorAction SilentlyContinue) {
     # Alias 'ls' to 'lsd'
     Set-Alias ls lsd
-}
-# alias for lsd
-function l {
-    lsd -l @args
-}
 
-function la {
-    lsd -a @args
-}
+    # alias for lsd
+    function l {
+        lsd -l @args
+    }
 
-function lla {
-    lsd -la @args
-}
+    function la {
+        lsd -a @args
+    }
 
-function ll {
-    lsd -lh @args
-}
+    function lla {
+        lsd -la @args
+    }
 
-function lt {
-    lsd --tree @args
+    function ll {
+        lsd -lh @args
+    }
+
+    function lt {
+        lsd --tree @args
+    }
 }
 
 setproxy
