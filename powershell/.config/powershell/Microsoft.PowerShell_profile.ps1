@@ -97,6 +97,17 @@ function csgen {
     clang-format -style=google -dump-config > .clang-format
 }
 
+# shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+function y {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath $cwd
+    }
+    Remove-Item -Path $tmp
+}
+
 # Alias 'gls' to the 'ls' command with full path
 Set-Alias gls Get-ChildItem
 
