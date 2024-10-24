@@ -36,6 +36,11 @@ if($IsWindows){
     shutdown /s /t 0
   }
 
+  function gitfu {
+    git fetch
+    git status
+  }
+
   function setproxy {
       param (
           [string]$ProxyAddress
