@@ -13,7 +13,12 @@ fish_add_path $fish_add_path_flag /home/$USER/.local/share/nvim/mason/bin/ # too
 fish_add_path $fish_add_path_flag /home/$USER/.luarocks/bin/ # tools installed by luarocks
 
 # for wsl
-set virt_env (systemd-detect-virt)
-if string match -q "wsl" $virt_env
-  fish_add_path $fish_add_path_flag /mnt/c/Windows/ # explorer.exe
+if command -v systemd-detect-virt > /dev/null
+  set virt_env (systemd-detect-virt)
+
+  if string match -q "wsl" $virt_env
+    fish_add_path $fish_add_path_flag /mnt/c/Windows/ # explorer.exe
+  end
+
 end
+

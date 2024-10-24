@@ -1,5 +1,7 @@
 # Run systemd-detect-virt and store the output in the variable "virt_env"
-set virt_env (systemd-detect-virt)
+if command -v systemd-detect-virt > /dev/null
+  set virt_env (systemd-detect-virt)
+end
 
 # Set up command line proxy
 function setproxy
@@ -20,7 +22,7 @@ function setproxy
     # No proxy configuration needed. Go use v2raya/dae
     return
   else
-    echo "setproxy: Unknown Platform: $virt_env"
+    # echo "setproxy: Unknown Platform: $virt_env"
     return
   end
 
