@@ -79,6 +79,7 @@ if($IsWindows){
 
   $env:CMAKE_GENERATOR = "MSYS Makefiles"
   $env:PYTHONSTARTUP = "$HOME\.PYTHONSTARTUP"
+  $env:YAZI_FILE_ONE = "$env:USERPROFILE\scoop\apps\git\current\usr\bin\file.exe"
 
 }else{
   # other system other than windows
