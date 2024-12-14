@@ -49,7 +49,7 @@ if($IsWindows){
       # Check if v2rayn.exe or v2rayawin.exe is running
       $v2raynRunning = Get-Process -Name "v2rayn" -ErrorAction SilentlyContinue
       $v2rayawinRunning = Get-Process -Name "v2rayawin" -ErrorAction SilentlyContinue
-      $nekorayRunning = Get-Process -Name "nekoray" -ErrorAction SilentlyContinue
+      $nekorayRunning = Get-Process -Name "nekobox" -ErrorAction SilentlyContinue
 
       # Set default proxy address based on running process
       if (-not $ProxyAddress) {
@@ -58,7 +58,7 @@ if($IsWindows){
           } elseif ($v2rayawinRunning) {
               $ProxyAddress = "http://localhost:20172"
           } elseif ($nekorayRunning) {
-              $ProxyAddress = "http://localhost:2081"
+              $ProxyAddress = "http://localhost:2080"
           } else {
               #$ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
               return
@@ -80,6 +80,7 @@ if($IsWindows){
   $env:CMAKE_GENERATOR = "MSYS Makefiles"
   $env:PYTHONSTARTUP = "$HOME\.PYTHONSTARTUP"
   $env:YAZI_FILE_ONE = "$env:USERPROFILE\scoop\apps\git\current\usr\bin\file.exe"
+  $env:EDITOR = "nvim" 
 
 }else{
   # other system other than windows
