@@ -13,10 +13,14 @@ function setproxy
 
   if string match -q "wsl" $virt_env
     set hostip (ip route | grep default | awk '{print $3}');
-    set http_port 10811; # v2rayn
+    # set http_port 10811; # v2rayn
+    set http_port 2080; # nekobox
+
   else if string match -q "vmware" $virt_env
     set hostip 192.168.198.1;
-    set http_port 10811; # v2rayn
+    # set http_port 10811; # v2rayn
+    set http_port 2080; # nekobox
+    
   else if string match -q "none" $virt_env
     # echo "setproxy: Real machine detected." 
     # No proxy configuration needed. Go use v2raya/dae
