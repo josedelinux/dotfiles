@@ -54,7 +54,7 @@ if($IsWindows){
       # Set default proxy address based on running process
       if (-not $ProxyAddress) {
           if ($v2raynRunning) {
-              $ProxyAddress = "http://localhost:10809"
+              $ProxyAddress = "http://localhost:10808"
           } elseif ($v2rayawinRunning) {
               $ProxyAddress = "http://localhost:20172"
           } elseif ($nekorayRunning) {
