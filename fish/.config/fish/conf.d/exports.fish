@@ -23,8 +23,10 @@ function setproxy
     
   else if string match -q "none" $virt_env
     # echo "setproxy: Real machine detected." 
-    # No proxy configuration needed. Go use v2raya/dae
-    return
+    # no config needed with tproxy(v2raya) or tun mode(clash)
+
+    # set hostip 127.0.0.1;
+    # set http_port 7897; # clash verge rv
   else
     # echo "setproxy: Unknown Platform: $virt_env"
     return
@@ -35,8 +37,7 @@ function setproxy
     export https_proxy="http://$hostip:$http_port";
     echo "Network Proxy on"
   else
-    # something went wrong
-    dumpproxy
+    # dumpproxy
   end
 end
 
