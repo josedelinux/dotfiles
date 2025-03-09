@@ -27,3 +27,7 @@ if test $USE_OMP = true
 
     end
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
