@@ -164,6 +164,9 @@ if (Get-Command fnm -ErrorAction SilentlyContinue) {
   fnm env --use-on-cd | Out-String | Invoke-Expression
 }
 
+if (Get-Command direnv -ErrorAction SilentlyContinue) {
+  Invoke-Expression "$(direnv hook pwsh)"
+}
 #$exTime = Measure-Command {
 #  Invoke-Expression (&starship init powershell)
 #}
