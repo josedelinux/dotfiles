@@ -165,6 +165,7 @@ if (Get-Command fnm -ErrorAction SilentlyContinue) {
 }
 
 if (Get-Command direnv -ErrorAction SilentlyContinue) {
+  $Env:HOME = $HOME
   Invoke-Expression "$(direnv hook pwsh)"
 }
 #$exTime = Measure-Command {
