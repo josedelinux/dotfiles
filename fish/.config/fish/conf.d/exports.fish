@@ -5,6 +5,9 @@ end
 
 # Set up command line proxy
 function setproxy
+  # disable setproxy
+  return
+
   if test -n "$http_proxy"
     # echo "setproxy: Proxy is already set. Skipping."
     # dumpproxy
