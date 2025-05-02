@@ -11,6 +11,7 @@ local config = {}
 config.check_for_updates = false
 
 -- config.enable_scroll_bar = true
+config.scrollback_lines = 65536
 
 -- config.color_scheme = 'Batman'
 -- config.color_scheme = "Catppuccin Frappe"
