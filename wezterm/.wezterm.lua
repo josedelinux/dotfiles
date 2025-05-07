@@ -13,11 +13,13 @@ config.check_for_updates = false
 -- config.enable_scroll_bar = true
 config.scrollback_lines = 65536
 
--- config.color_scheme = 'Batman'
--- config.color_scheme = "Catppuccin Frappe"
--- config.color_scheme = "Builtin Solarized Dark"
--- config.color_scheme = 'Molokai (Gogh)'
-config.color_scheme = "Molokai"
+-- config.color_scheme = "Catppuccin Frappe" -- looks fine with opaque background
+-- config.color_scheme = "Molokai (Gogh)"
+-- config.color_scheme = "Molokai"
+-- config.color_scheme = "Campbell (Gogh)"
+-- config.color_scheme = "Catppuccin Latte"
+config.color_scheme = "Ubuntu"
+-- config.color_scheme = 'Konsolas'
 
 -- config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font = wezterm.font_with_fallback({
