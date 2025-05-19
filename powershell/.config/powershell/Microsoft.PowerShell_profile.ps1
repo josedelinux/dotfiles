@@ -50,6 +50,7 @@ if($IsWindows){
       $v2raynRunning = Get-Process -Name "v2rayn" -ErrorAction SilentlyContinue
       $v2rayawinRunning = Get-Process -Name "v2rayawin" -ErrorAction SilentlyContinue
       $nekorayRunning = Get-Process -Name "nekobox" -ErrorAction SilentlyContinue
+      $clashVergeRunning = Get-Process -Name "clash-verge" -ErrorAction SilentlyContinue
 
       # Set default proxy address based on running process
       if (-not $ProxyAddress) {
@@ -59,6 +60,8 @@ if($IsWindows){
               $ProxyAddress = "http://localhost:20172"
           } elseif ($nekorayRunning) {
               $ProxyAddress = "http://localhost:2080"
+          } elseif ($clashVergeRunning) {
+              $ProxyAddress = "http://localhost:7897"
           } else {
               #$ProxyAddress = "http://localhost:10809" # Default to v2rayn's address if no process is found
               return
@@ -75,6 +78,30 @@ if($IsWindows){
   function unsetproxy() {
     $Env:https_proxy=""
     $Env:http_proxy=""
+  }
+
+  function Get-PortProcess {
+      [CmdletBinding()]
+      param (
+          [Alias("p")]
+          [int]$Port = 8080
+      )
+ 
+      $connections = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue
+ 
+      if ($null -eq $connections) {
+          Write-Host "No process is using port $Port." -ForegroundColor Yellow
+      } else {
+          foreach ($conn in $connections) {
+              $proc = Get-Process -Id $conn.OwningProcess -ErrorAction SilentlyContinue
+              [PSCustomObject]@{
+                  Port        = $Port
+                  State       = $conn.State
+                  PID         = $conn.OwningProcess
+                  ProcessName = $proc.ProcessName
+              }
+          }
+      }
   }
 
   $env:CMAKE_GENERATOR = "MSYS Makefiles"
@@ -173,3 +200,7 @@ if (Get-Command direnv -ErrorAction SilentlyContinue) {
 #}
 #
 #Write-host "Starship initialization time was: $exTime"
+
+# vscode shell integration
+if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" }
+
