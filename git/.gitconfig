@@ -1,8 +1,7 @@
 [user]
     email = josedelinux@hotmail.com
     name = Juan Chan
-[color]
-    ui = auto
+
 # [http]
 # 	proxy = http://172.20.240.1:10811
 # 	proxy = http://localhost:10809
