@@ -49,6 +49,10 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		label = "wsl",
 		args = { "wsl.exe", "--cd", "~" },
 	})
+	table.insert(launch_menu, {
+		label = "msys2",
+		args = { "C:\\msys64\\msys2_shell.cmd", "-defterm", "-here", "-no-start", "-ucrt64" },
+	})
 	default_prog = { "pwsh.exe", "-NoLogo" }
 elseif wezterm.target_triple == "x86_64-apple-darwin" then
 	table.insert(launch_menu, {
