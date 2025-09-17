@@ -24,7 +24,7 @@ if($IsWindows){
     nvim (Get-PSReadlineOption).HistorySavePath
   }
 
-  function vihost {
+  function vihosts {
     sudo nvim C:\Windows\System32\drivers\etc\hosts
   }
 
