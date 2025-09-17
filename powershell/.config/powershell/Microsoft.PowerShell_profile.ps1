@@ -24,6 +24,10 @@ if($IsWindows){
     nvim (Get-PSReadlineOption).HistorySavePath
   }
 
+  function vihost {
+    sudo nvim C:\Windows\System32\drivers\etc\hosts
+  }
+
   function RebootFirmware {
     shutdown /r /fw /t 0
   }
