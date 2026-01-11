@@ -9,6 +9,7 @@ end)
 local config = {}
 
 config.check_for_updates = false
+config.audible_bell = "Disabled"
 
 -- config.enable_scroll_bar = true
 config.scrollback_lines = 65536
@@ -18,7 +19,8 @@ config.scrollback_lines = 65536
 -- config.color_scheme = "Molokai"
 -- config.color_scheme = "Campbell (Gogh)"
 -- config.color_scheme = "Catppuccin Latte"
-config.color_scheme = "Ubuntu"
+-- config.color_scheme = "Ubuntu"
+config.color_scheme = "nord"
 -- config.color_scheme = 'Konsolas'
 
 -- config.font = wezterm.font("JetBrainsMono Nerd Font")
@@ -31,6 +33,8 @@ config.font_size = 11
 config.window_background_opacity = 0.85
 
 config.hide_tab_bar_if_only_one_tab = true
+
+config.adjust_window_size_when_changing_font_size = false
 
 -- Using shell
 local launch_menu = {}
