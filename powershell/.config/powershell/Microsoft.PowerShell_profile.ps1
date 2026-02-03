@@ -129,6 +129,7 @@ if($IsWindows){
 # platform agnostic configs
 
 Set-Alias cxx clang++
+Set-Alias pkill pskill
 Set-Alias lg lazygit
 
 function csgen {
