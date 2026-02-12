@@ -19,10 +19,15 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# copy from tmux remote linux to local
 cb() {
   printf "\033]52;c;%s\a" "$(base64 -w0 "$1")"
 }
 
+# Quick find
+qfind() {
+    find . -name "*$1*"
+}
 
 if command -v zoxide &> /dev/null; then
 	eval "$(zoxide init bash)"

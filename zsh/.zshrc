@@ -16,7 +16,7 @@ compinit
 
 
 setopt AUTO_CD              # cd by typing directory name
-setopt CORRECT              # command correction
+# setopt CORRECT              # command correction
 setopt SHARE_HISTORY        # share history between sessions
 setopt HIST_IGNORE_DUPS     # ignore duplicate commands
 
@@ -29,3 +29,6 @@ alias zshreload='source ~/.zshrc'
 
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$HOME/bin:$PATH"
+
+eval "$(zoxide init zsh)"
+
