@@ -209,3 +209,5 @@ if (Get-Command direnv -ErrorAction SilentlyContinue) {
 # vscode shell integration
 if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" }
 
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
