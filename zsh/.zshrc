@@ -17,8 +17,10 @@ compinit
 
 setopt AUTO_CD              # cd by typing directory name
 # setopt CORRECT              # command correction
+setopt APPEND_HISTORY	    # append instead of overwrite
 setopt SHARE_HISTORY        # share history between sessions
 setopt HIST_IGNORE_DUPS     # ignore duplicate commands
+setopt HIST_REDUCE_BLANKS
 
 
 alias lg='lazygit'
