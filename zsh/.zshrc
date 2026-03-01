@@ -22,6 +22,13 @@ setopt SHARE_HISTORY        # share history between sessions
 setopt HIST_IGNORE_DUPS     # ignore duplicate commands
 setopt HIST_REDUCE_BLANKS
 
+setopt AUTO_PUSHD           # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+# setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 alias lg='lazygit'
 alias ll='ls -alF'
@@ -32,5 +39,8 @@ alias zshreload='source ~/.zshrc'
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$HOME/bin:$PATH"
 
-eval "$(zoxide init zsh)"
+# zsh way
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
 
