@@ -39,6 +39,11 @@ alias zshreload='source ~/.zshrc'
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$HOME/bin:$PATH"
 
+# copy from tmux remote linux to local
+cb() {
+  printf "\033]52;c;%s\a" "$(base64 "$1" | tr -d '\n')"
+}
+
 # zsh way
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
