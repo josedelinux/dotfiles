@@ -13,19 +13,28 @@ setopt appendhistory
 # autocomplete
 autoload -Uz compinit
 compinit
+#allow tab completion in the middle of a word 
+setopt COMPLETE_IN_WORD
 
+## keep background processes at full speed 
+#setopt NOBGNICE
+
+# On exit, have zsh send SIGHUP to all running jobs
+setopt HUP
 
 setopt AUTO_CD              # cd by typing directory name
 # setopt CORRECT              # command correction
 setopt APPEND_HISTORY	    # append instead of overwrite
+setopt INC_APPEND_HISTORY   # Append each command to the history file immediately
 setopt SHARE_HISTORY        # share history between sessions
 setopt HIST_IGNORE_DUPS     # ignore duplicate commands
 setopt HIST_REDUCE_BLANKS
 
+#setopt NO_BEEP
+
 setopt AUTO_PUSHD           # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 # setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
-
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
@@ -49,3 +58,6 @@ if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
 
+autoload -U colors
+colors
+# echo "${fg[yellow]}Hello Color${reset_color}"
