@@ -39,12 +39,21 @@ setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+
 alias lg='lazygit'
+
 alias ll='ls -alF'
 alias l='ls -alF'
 alias zshconfig='vim ~/.zshrc'
 alias zshreload='source ~/.zshrc'
 
+
+if (( $+commands[lsd] )); then
+  alias ls='lsd -l'
+  alias la='lsd -a'
+  alias lla='lsd -la'
+  alias lt='lsd --tree'
+fi
 
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$HOME/bin:$PATH"
 
