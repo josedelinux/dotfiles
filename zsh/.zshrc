@@ -61,3 +61,10 @@ fi
 autoload -U colors
 colors
 # echo "${fg[yellow]}Hello Color${reset_color}"
+
+# fnm
+FNM_PATH="/home/$USER/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
