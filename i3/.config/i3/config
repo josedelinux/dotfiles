@@ -50,7 +50,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 set $term kitty
-set $term wezterm
+# set $term wezterm
 bindsym $mod+Return exec $term
 # bindsym $mod+Return exec i3-sensible-terminal
 
