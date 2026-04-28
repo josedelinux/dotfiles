@@ -62,10 +62,23 @@ cb() {
   printf "\033]52;c;%s\a" "$(base64 "$1" | tr -d '\n')"
 }
 
-# zsh way
+# load zoxide the zsh way
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
+
+# load fzf the zsh way
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
 
 autoload -U colors
 colors
