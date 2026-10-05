@@ -1,6 +1,6 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, pkgs, ... }:
 
@@ -10,10 +10,13 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
+
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -26,7 +29,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Asia/Taipei";
+  time.timeZone = "America/Lima";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -69,22 +72,18 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    # jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.juan = {
+  users.users."juan" = {
     isNormalUser = true;
     description = "juan";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqRJgygJUa2BUWxYhSL1PROR7tku3A3nNRSC2ToFSZbEFCqtltlqfC5LbJHYxRfQfdMjGgmrdWKnSNGzsvD/TrdAcLDssXbNIU3OSowNQka5gR5rj2pJj9ZHrrGKjaNqK1kz4Nt4xrBaK4YdjMOgstHYrc0KqJ0exygecB0yUvX+9Vw0LPhksS9ZlqIrTEVoeUoizHsZ7kl23S6CcX7TsCIg7gVVRmoMjB7StNP66R+1VSmdtcC623V2H4Jz28d6cY2l6n4dyAXH8491WyAD1BKwutGMm6aPj0qWxD4eDv2d58KAC765kazsdCoBHuGCZZ78atZow/OjrjUg7Krm3LWr6JNa8hW/DW7w0oCPLO1d0B1gbMYY6eXaTpK5fxCwqSColMKeoLYNDD9sZTawp8xcDgV4+cby4c3HxHSfh/B83wYI8wdX/z1xZ0p4WY5RjqNbukbZ1/ZXesEgUrFBRLZgEXBPK89XBZFbLAr0eERrB0+qVgo2zpWcqm1jnpv/s= jose@DESKTOP-HP-PLUS"
     ];
@@ -100,6 +99,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -123,38 +125,36 @@
         };
   };
 
-  programs.fish.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
+  # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-  vim
-  obsidian
-
-  tinycc
-  gcc
-  gnumake
-  cmake
-  git
-  lazygit
+    pkgs.neovim
+    vim
   
-  home-manager
-  fastfetch
-  wget
-  curl
-  ffmpeg
-  btop
-  htop
-  tmux
-  yazi
-  lsd
-  wezterm
-  fish
-
-  telegram-desktop
-
-  pkgs.delta
-  pkgs.google-chrome
+    tinycc
+    gcc
+    gnumake
+    cmake
+    git
+    lazygit
+    
+    home-manager
+    fastfetch
+    wget
+    curl
+    ffmpeg
+    btop
+    htop
+    tmux
+    yazi
+    lsd
+    wezterm
+    fish
+    
+    telegram-desktop
+    
+    pkgs.delta
+    pkgs.google-chrome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -176,23 +176,39 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  # system.copySystemConfiguration = true;
+
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "26.05"; # Did you read the comment?
 
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 7d";
+    options = "--delete-older-than 30d";
   };
+  nix.settings.auto-optimise-store = true;
 }
-
