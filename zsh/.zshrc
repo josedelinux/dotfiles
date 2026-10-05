@@ -90,3 +90,16 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
+
+[ -f ~/.profile ] && . ~/.profile
+
+# fnm
+FNM_PATH="/home/juan/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
+# >>> Codex installer >>>
+export PATH="/home/juan/.local/bin:$PATH"
+# <<< Codex installer <<<
